@@ -1,6 +1,7 @@
 import posthtml from "@vituum/vite-plugin-posthtml";
 import { ViteImageOptimizer } from "vite-plugin-image-optimizer";
 import { defineConfig } from "vite";
+import { resolve } from "path";
 
 // export default {
 //   plugins: [posthtml()],
@@ -27,6 +28,14 @@ export default defineConfig(() => {
         },
       }),
     ],
+    build: {
+      rollupOptions: {
+        input: {
+          main: resolve(__dirname, "index.html"),
+          login: resolve(__dirname, "login/index.html"),
+        },
+      },
+    },
     base: "/sferabud/",
   };
 });
